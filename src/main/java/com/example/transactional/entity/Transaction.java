@@ -13,6 +13,7 @@ import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
 @Table(name = "TRANSACTION")
@@ -39,6 +40,7 @@ public class Transaction implements Serializable {
     private Double amount;
 
     @Column(name = "STATUS")
+    @Setter
     private String status;
 
     public com.example.transactional.dto.Transaction project() {

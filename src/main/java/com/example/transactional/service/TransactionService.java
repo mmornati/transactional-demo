@@ -26,7 +26,7 @@ public class TransactionService {
     }
 
     @Transactional
-    public com.example.transactional.dto.Transaction save(com.example.transactional.dto.Transaction transactionDto) {
+    public com.example.transactional.dto.Transaction saveWithConversion(com.example.transactional.dto.Transaction transactionDto) {
         return transactionRepository.save(
                 Transaction.builder()
                         .amount(transactionDto.getAmount())
@@ -34,5 +34,10 @@ public class TransactionService {
                         .status(transactionDto.getStatus())
                         .build()
         ).project();
+    }
+
+    @Transactional
+    public Transaction save(Transaction transaction) {
+        return transactionRepository.save(transaction);
     }
 }

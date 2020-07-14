@@ -20,8 +20,11 @@ public class PaymentService {
     final HttpClient httpClient;
 
     public Optional<Transaction> payment(Transaction payment) {
-        payment.setStatus("PROCESSING");
-        Transaction savedObject = transactionService.save(payment);
+        com.example.transactional.entity.Transaction savedObject = transactionService.save(com.example.transactional.entity.Transaction.builder()
+                .amount(payment.getAmount())
+                .orderId(payment.getOrderId())
+                .status("PROCESSING")
+                .build());
         try {
             HttpResponse<String> response = httpClient.send(HttpRequest.newBuilder().uri(URI.create("http://localhost:8080/v1/mock?delay=true")).build());
             if (response.statusCode()==200) {
@@ -29,7 +32,7 @@ public class PaymentService {
             } else {
                 savedObject.setStatus("ERROR");
             }
-            return Optional.of(savedObject);
+            return Optional.of(savedObject.project());
         } catch (HttpConnectTimeoutException e) {
             log.warn("Error in payment operation {}", e.getMessage());
         }
