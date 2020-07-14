@@ -29,6 +29,7 @@ public class TransactionService {
     public com.example.transactional.dto.Transaction save(com.example.transactional.dto.Transaction transactionDto) {
         return transactionRepository.save(
                 Transaction.builder()
+                        .id(transactionDto.getId())
                         .amount(transactionDto.getAmount())
                         .orderId(transactionDto.getOrderId())
                         .status(transactionDto.getStatus())

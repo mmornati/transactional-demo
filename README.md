@@ -15,6 +15,8 @@ The final product is simulating a Payment Proxy:
 
 ## APIs
 
+You can find the sample APIs call inside the [postman](postman/Demo%20Transactional.postman_collection.json) collection.
+
 ### /v1/mock
 This API is used to simulate the external payment.
 

@@ -1,0 +1,93 @@
+{
+	"info": {
+		"_postman_id": "d7062b2f-d826-4090-a116-4421969901b9",
+		"name": "Demo Transactional",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Payment",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "4df4d569-7922-4c09-8a67-cb2d875c0313",
+						"exec": [
+							"var uuid = require('uuid'); ",
+							"pm.environment.set(\"orderId\", uuid.v4());",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"amount\": 10,\n   \"orderId\": \"{{orderId}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/payments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"payments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test Provider External Call",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/mock",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"mock"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Transactions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/payments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"payments"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

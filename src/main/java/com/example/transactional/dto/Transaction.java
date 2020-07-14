@@ -10,6 +10,5 @@ public class Transaction {
     Long id;
     String orderId;
     Double amount;
-    @Setter
     String status;
 }
