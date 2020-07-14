@@ -6,6 +6,7 @@ A medium article explaining all the steps will come...
 
 ## Sample Architecture
 ![Architecture](PaymentProxy.jpg)
+
 The final product is simulating a Payment Proxy:
 * Exposes a payment API to process Payment
 * Stores the payment transaction and its status into the database
@@ -14,6 +15,8 @@ The final product is simulating a Payment Proxy:
 > For demo purposes the external provider is mocked using an internal API.
 
 ## APIs
+
+You can find the sample APIs call inside the [postman](postman/Demo%20Transactional.postman_collection.json) collection.
 
 ### /v1/mock
 This API is used to simulate the external payment.
